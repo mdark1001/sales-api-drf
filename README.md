@@ -29,4 +29,4 @@ $ python manage.py migrate; python manage.py runserver
 
 Al ingresar al api-root podemos observar lo siguiente:
 
-![](file:///home/miguel/proyectos/djangoProject/sales-api-drf/images/api-root.png)
+![](images/api-root.png)
