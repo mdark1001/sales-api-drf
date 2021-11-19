@@ -119,6 +119,28 @@ class SalesTest(TestCase):
         )
         self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
 
+    def test_get_sales_per_team(self):
+        """
+
+        :return:
+        """
+        team = Team.objects.first()
+        sales = Sales.objects.filter(user__profile__team=team).count()
+        res = self.client.get(reverse('api:sales-team-list', kwargs={'team_id': team.pk}))
+        print(res.data)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data['count'], sales)
+
+    def test_get_sales_per_non_exists_team(self):
+        """
+
+        :return:
+        """
+
+        res = self.client.get(reverse('api:sales-team-list', kwargs={'team_id': 100}))
+
+        self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
+
     def create_client(self):
         return Client.objects.create(
             name=self.faker.first_name(),

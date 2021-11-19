@@ -23,6 +23,7 @@ class APIModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-id']
 
 
 class Team(APIModel):
