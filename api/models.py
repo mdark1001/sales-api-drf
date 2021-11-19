@@ -101,3 +101,6 @@ class Sales(APIModel):
 
     def __str__(self):
         return f"{str(self.client)} - {str(self.date)}  ${self.amount}"
+
+    class Meta:
+        verbose_name_plural ='Sales'
